@@ -5,16 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class DashboardView extends StatefulWidget {
+class DashboardView extends StatelessWidget {
   const DashboardView({
     super.key,
   });
 
-  @override
-  State<DashboardView> createState() => _DashboardViewState();
-}
-
-class _DashboardViewState extends State<DashboardView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<NewsController>(builder: (controller) {
@@ -27,7 +22,7 @@ class _DashboardViewState extends State<DashboardView> {
               gradient: LinearGradient(
                   colors: [Color(0xff05021B), Colors.black],
                   begin: Alignment.topRight,
-                  stops: [0.5, 1]),
+                  stops: [0.3, 1]),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +32,7 @@ class _DashboardViewState extends State<DashboardView> {
                   width: double.infinity,
                   padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 68.h),
                   child: Text(
-                    'Hey ${controller.firstName ?? ''}',
+                    'Hey ${controller.firstName}',
                     style: const TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.w900,

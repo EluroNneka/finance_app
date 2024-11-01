@@ -9,7 +9,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class NewsController extends GetxController {
-  //List of news headline
   List<NewsData> news = [];
   String? firstName;
   String? lastName;
@@ -21,16 +20,6 @@ class NewsController extends GetxController {
   //getter for news
   List<NewsData> get getNews {
     return news;
-  }
-
-  //getter for first name
-  String? get getFName {
-    return firstName;
-  }
-
-  //getter for last name
-  String? get getLName {
-    return lastName;
   }
 
   void setFirstName(String val) {
@@ -55,8 +44,8 @@ class NewsController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
     fetchNews();
+    super.onInit();
   }
 
   Future registerUser(
@@ -88,13 +77,13 @@ class NewsController extends GetxController {
     update();
   }
 
-  /* Future fetchUser() async {
+  Future fetchUser() async {
     UserDatabaseManager user = UserDatabaseManager();
-   var result = await user.getUser(1);
-    setUserName(UserData.fromMap(result!.toMap()).firstName!);
-
+    var result = await user.getUser(1);
     update();
-  }*/
+    setUserName(UserData.fromMap(result!.toMap()).firstName!);
+    update();
+  }
 
   Future<List<NewsData>> fetch(http.Client https) async {
     //Making Api call

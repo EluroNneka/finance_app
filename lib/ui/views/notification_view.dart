@@ -5,14 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class NotificationView extends StatefulWidget {
+class NotificationView extends StatelessWidget {
   const NotificationView({super.key});
 
-  @override
-  State<NotificationView> createState() => _NotificationViewState();
-}
-
-class _NotificationViewState extends State<NotificationView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<NewsController>(builder: (controller) {
@@ -61,6 +56,7 @@ class _NotificationViewState extends State<NotificationView> {
                 alignment: Alignment.bottomCenter,
                 child: InkWell(
                   onTap: () {
+                    controller.fetchUser();
                     Get.offNamedUntil(Routes.dashboard, (route) => false);
                   },
                   child: Container(

@@ -1,16 +1,77 @@
-# finance_app
+#Finance News App
+An app targeted at getting news related to finance
 
-A new Flutter project.
+##App Features
+App Features:
 
-## Getting Started
+* Splash
+* Login
+* Dashboard
+* Routing
+* Theme
+* Http(For making network calls)
+* Database(Sqflite)
+* GetX(State Management)
 
-This project is a starting point for a Flutter application.
+### Folder Structure
+Here is the core folder structure which flutter provides.
 
-A few resources to get you started if this is your first Flutter project:
+```
+flutter-app/
+|- android
+|- build
+|- ios
+|- lib
+|- test
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Here is the folder structure we are using in this project
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+lib/
+|- core/
+|- style/
+|- nav/
+|- ui/
+|- main.dart
+```
+
+### Dependency Injection(DI)
+Contains all our Dependency Injection logic which is built up at run-time, it is sub-module into
+different packages by functionality.
+
+```
+app/
+    |- locator.dart
+
+```
+
+### Views
+This directory contains all the ui of your application. All the screen specific
+widgets will be placed in `widgets` directory as shown in the example below:
+
+```
+ui/
+|- widget
+   |- custom_textfield.dart
+   
+
+|- views/
+    |- login_view.dart
+
+```
+
+### Styles
+Contains common files like colors, theme and dimensions used all around the projects
+
+### Models
+Contains Model classes like custom exceptions, server error models and a custom state class
+
+### Routes
+This file contains all the routes for our application.
+
+### Main
+This is the starting point of the application. All the application level configurations are defined
+in this file i.e, theme, routes, title, orientation etc.
+
+### ScreenShots

@@ -1,3 +1,4 @@
+import 'package:finance_app/style/colors.dart';
 import 'package:finance_app/ui/views/news_controller.dart';
 import 'package:finance_app/ui/widgets/newscard_list.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,7 @@ class _DashboardViewState extends State<DashboardView> {
                   width: double.infinity,
                   padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 68.h),
                   child: Text(
-                    'Hey ${controller.firstName}',
+                    'Hey ${controller.firstName ?? ''}',
                     style: const TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.w900,
@@ -46,7 +47,7 @@ class _DashboardViewState extends State<DashboardView> {
                     textAlign: TextAlign.start,
                   ),
                 ),
-                if (controller.news.isEmpty)
+                if (controller.news.isEmpty && controller.loading == false)
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     color: Colors.black,
@@ -59,6 +60,16 @@ class _DashboardViewState extends State<DashboardView> {
                         color: Colors.white,
                       ),
                       textAlign: TextAlign.start,
+                    ),
+                  )
+                else if (controller.news.isEmpty && controller.loading == true)
+                  Center(
+                    child: SizedBox(
+                      height: 40.h,
+                      width: 40.w,
+                      child: const CircularProgressIndicator(
+                        backgroundColor: AppColors.primary,
+                      ),
                     ),
                   )
                 else

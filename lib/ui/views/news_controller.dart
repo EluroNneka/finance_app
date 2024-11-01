@@ -14,6 +14,7 @@ class NewsController extends GetxController {
   String? firstName;
   String? lastName;
   String? userName;
+  bool loading = false;
 
   String newsApi = "${AppKeys.baseUrl}?category=general&token=${AppKeys.token}";
 
@@ -97,11 +98,13 @@ class NewsController extends GetxController {
 
   Future<List<NewsData>> fetch(http.Client https) async {
     //Making Api call
+    loading = true;
     final response = await https.get(Uri.parse(newsApi));
 
     debugPrint("The response: ${jsonDecode(response.body)}");
 
     if (response.statusCode == 200) {
+      loading = false;
       List<NewsData> temp = [];
       jsonDecode(response.body).forEach((e) => temp.add(NewsData.fromJson(e)));
       setNews(temp);

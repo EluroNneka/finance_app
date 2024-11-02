@@ -4,7 +4,6 @@ String userLastName = 'lastName';
 String userId = 'id';
 
 class UserData {
-  // int? id;
   String? firstName;
   String? lastName;
 
@@ -12,7 +11,7 @@ class UserData {
     var map = <String, Object?>{
       userFirstName: firstName,
       userLastName: lastName,
-      //userId : id,
+
     };
     return map;
   }

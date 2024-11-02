@@ -1,5 +1,6 @@
 import 'package:finance_app/style/colors.dart';
-import 'package:finance_app/ui/views/news_controller.dart';
+import 'package:finance_app/ui/views/dashboard/dashboard_controller.dart';
+import 'package:finance_app/ui/views/login/login_controller.dart';
 import 'package:finance_app/ui/widgets/newscard_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +13,7 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<NewsController>(builder: (controller) {
+    return GetBuilder<DashboardController>(builder: (controller) {
       return Scaffold(
           backgroundColor: Colors.transparent,
           body: Container(
@@ -27,19 +28,23 @@ class DashboardView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  height: 161.h,
-                  width: double.infinity,
-                  padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 68.h),
-                  child: Text(
-                    'Hey ${controller.firstName}',
-                    style: const TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w900,
-                      fontFamily: "Raleway",
-                      color: Colors.white,
+                FutureBuilder(
+                  future: controller.getUserData(),
+                  builder: (c, s) =>
+                  Container(
+                    height: 161.h,
+                    width: double.infinity,
+                    padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 68.h),
+                    child: Text(
+                      'Hey ${s.data.toString()}',
+                      style: const TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w900,
+                        fontFamily: "Raleway",
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.start,
                     ),
-                    textAlign: TextAlign.start,
                   ),
                 ),
                 if (controller.news.isEmpty && controller.loading == false)
@@ -58,7 +63,8 @@ class DashboardView extends StatelessWidget {
                     ),
                   )
                 else if (controller.news.isEmpty && controller.loading == true)
-                  Center(
+                  Align(
+                    alignment: Alignment.center,
                     child: SizedBox(
                       height: 40.h,
                       width: 40.w,

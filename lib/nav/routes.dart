@@ -1,7 +1,7 @@
-import 'package:finance_app/ui/views/dashboard_view.dart';
-import 'package:finance_app/ui/views/login_view.dart';
+import 'package:finance_app/ui/views/dashboard/dashboard_view.dart';
+import 'package:finance_app/ui/views/login/login_view.dart';
 import 'package:finance_app/ui/views/news_binding.dart';
-import 'package:finance_app/ui/views/notification_view.dart';
+import 'package:finance_app/ui/views/notification/notification_view.dart';
 import 'package:finance_app/ui/views/splash_view.dart';
 import 'package:get/get.dart';
 

@@ -1,10 +1,12 @@
 import 'package:finance_app/style/colors.dart';
-import 'package:finance_app/ui/views/news_controller.dart';
+import 'package:finance_app/ui/views/login/login_controller.dart';
 import 'package:finance_app/ui/widgets/custom_textfield.dart';
 import 'package:finance_app/ui/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
+import '../../../nav/routes.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -16,7 +18,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<NewsController>(builder: (controller) {
+    return GetBuilder<LoginController>(builder: (controller) {
       return Scaffold(
         body: SingleChildScrollView(
           child: Container(
@@ -70,10 +72,12 @@ class _LoginViewState extends State<LoginView> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: RoundButton(
-                    disable: controller.firstName == null ||
-                        controller.lastName == null,
+                    disable: controller.getFirstName() == null ||
+                        controller.getLastName() == null,
                     onTapped: () async {
                       await controller.registerUser(context);
+                      // After successful registration user will be navigated to notification page
+                      Get.toNamed(Routes.notification);
                     },
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:finance_app/core/model/news_data.dart';
-import 'package:finance_app/ui/views/news_controller.dart';
+import 'package:finance_app/ui/views/dashboard/dashboard_controller.dart';
+import 'package:finance_app/ui/views/login/login_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
@@ -9,7 +10,7 @@ import 'news_provider_test.mocks.dart';
 
 @GenerateMocks([http.Client])
 
-final news = NewsController();
+final news = DashboardController();
 
 void main(){
 

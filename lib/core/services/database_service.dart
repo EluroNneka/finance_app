@@ -59,8 +59,22 @@ class UserDatabaseManager {
     return null;
   }
 
+  //Fetch operation
+  Future<UserData?> getFirstUser() async {
+    Database db = await database;
+
+    List<Map> maps = await db.query(userTable,
+        columns: [userId, userFirstName, userLastName],
+        limit: 1
+    );
+    if (maps.isNotEmpty) {
+      return UserData.fromMap(maps.first);
+    }
+    return null;
+  }
+
   // Insert Operation
-  Future<int> insertData(UserData user) async {
+  Future<int> insertUserData(UserData user) async {
     Database db = await database;
     var result = await db.insert('userTable', user.toMap());
     debugPrint("user added");
@@ -74,4 +88,13 @@ class UserDatabaseManager {
         await db.rawDelete('DELETE FROM $userTable WHERE $userId = ?', [id]);
     return result;
   }
+
+  // Delete Operation
+  Future<int> deleteAllPersons() async {
+    Database db = await database;
+    var result =
+    await db.rawDelete('DELETE FROM $userTable');
+    return result;
+  }
+
 }

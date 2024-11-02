@@ -1,6 +1,7 @@
 import 'package:finance_app/nav/routes.dart';
 import 'package:finance_app/style/colors.dart';
-import 'package:finance_app/ui/views/news_controller.dart';
+import 'package:finance_app/ui/views/login/login_controller.dart';
+import 'package:finance_app/ui/views/notification/notification_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,7 @@ class NotificationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<NewsController>(builder: (controller) {
+    return GetBuilder<NotificationController>(builder: (controller) {
       return Scaffold(
         body: Container(
             padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 34.h),
@@ -56,8 +57,7 @@ class NotificationView extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: InkWell(
                   onTap: () {
-                    controller.fetchUser();
-                    Get.offNamedUntil(Routes.dashboard, (route) => false);
+                    Get.toNamed(Routes.dashboard);
                   },
                   child: Container(
                     padding: EdgeInsets.all(12.h),
